@@ -10,15 +10,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        OneFragment oneFragment = OneFragment.newInstance("Ini data dari fragment one");
+        int data = 3;
+        OneFragment oneFragment = OneFragment.newInstance("Start fragment one with data " + data, data);
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.container, oneFragment, null)
                 .commit();
 
-        getSupportFragmentManager().beginTransaction()
+        /*getSupportFragmentManager().beginTransaction()
                 .addToBackStack("fragment_two")
                 .replace(R.id.container, new TwoFragment(), null)
-                .commit();
+                .commit();*/
     }
 
     @Override
