@@ -15,7 +15,16 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
 
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, new TwoFragment(), null)
+                .addToBackStack("fragment_two")
+                .replace(R.id.container, new TwoFragment(), null)
                 .commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        if (count > 0) getSupportFragmentManager().popBackStack();
+        else super.onBackPressed();
     }
 }
